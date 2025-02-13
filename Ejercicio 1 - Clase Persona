@@ -1,0 +1,32 @@
+#Primer codigo, Clase persona
+
+import time
+
+class Persona:
+      
+    def __init__(self, nombre, edad, direccion):
+     self.nombre = nombre
+     self.edad = edad
+     self.direccion = direccion 
+
+    def saludar(self):
+        print("Hola, mi nombre es: ", self.nombre)
+    
+    def comer(self, hora):
+        if hora > 7 and hora < 10:
+           print(self.nombre, ": Es la hora del desayuno")
+        elif hora > 12 and hora < 15:
+           print(self.nombre, ": Es la hora del almuerzo")
+        elif hora > 19 and hora < 21:
+           print(self.nombre, ": Es la hora de la cena")
+        else:
+           print(self.nombre, ": No tengo hambre aun")
+
+p1=Persona("Diego", 19, "Calle San luis")
+
+p1.saludar()
+hora = float(input("(ingrese una hora en formato 24 horas, como las 15.31): "))
+if hora < 0 or hora > 24:
+    print("Hora invalida")
+
+p1.comer(hora)
