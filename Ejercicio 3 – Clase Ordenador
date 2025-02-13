@@ -1,0 +1,105 @@
+#Ejercicio 3 – Clase Ordenador
+
+class Computadora:
+    
+    def __init__(self, marca, modelo, ram, procesador, almacenamiento, encendido):
+        self.marca = marca
+        self.modelo = modelo
+        self.ram = ram
+        self.procesador = procesador
+        self.almacenamiento = almacenamiento
+        self.encendido = encendido
+
+    def encender(self):
+        if self.encendido == False:
+            self.encendido = True
+            print("Iniciando el equipo...")
+            print("El equipo ha sido encendido")
+        else:
+            print("El equipo ya esta encendido")
+
+    def apagar(self):
+        if self.encendido == True:
+            self.encendido = False
+            print("Apagando el equipo...")
+            print("El equipo esta apagado")
+        else:
+            print("El equipo ya esta apagado")
+
+    def actualizarRam(self, ram):
+        if self.encendido == True:
+            print("***STOP: 0x00000098 (0x968C83A0, 0x01C7DAB7, 0x0002A300, 0x00000000)")
+        elif self.encendido == False:
+            print("Actualmente el equipo tiene", self.ram, "GB de RAM")
+            self.ram = int(input("A cuanto quieres expandir la memoria RAM del equipo? (en GB): "))
+            print("La RAM se ha expandido a", self.ram, "GB")
+
+    def actualizarAlmacenamiento(self, almacenamiento):
+        if self.encendido == True:
+            print("¿***STOP: 0x00000098 (0x968C83A0, 0x01C7DAB7, 0x0002A300, 0x00000000)")
+
+        elif self.encendido == False:
+            print("Actualmente el equipo tiene", self.almacenamiento, "GB de almacenamiento")
+            self.almacenamiento = int(input("¿Cuanto almacenamiento tendra el equipo? (en GB): "))
+            print("El almacenamiento se ha actualizado a", self.almacenamiento, "GB")
+
+    def verificarEstado(self):
+        if self.encendido == True:
+            print("El equipo esta encendido\n")
+        else:
+            print("El equipo esta apagado\n")
+
+    def verComponentes(self):
+        while True:
+            print("Marca:", self.marca)
+            print("Modelo:", self.modelo)
+            print("RAM:", self.ram, "GB")
+            print("Procesador:", self.procesador)
+            print("Almacenamiento:", self.almacenamiento, "GB")
+            eleccion = int(input("Presione 1 para volver"))
+            if eleccion == 1:
+                break
+            else:
+                print("Opción invalida, vuelve a intentarlo")
+
+
+def menu():
+    print("Que desea hacer con el equipo?")
+    print("1) Encender")
+    print("2) Apagar")
+    print("3) Actualizar RAM")
+    print("4) Actualizar Almacenamiento")
+    print("5) Ver componentes")
+    print("6) Salir")
+
+    eleccion = int(input("Seleccione alguna opcion: "))
+    if eleccion == 1:
+        Pc.encender()
+        menu()
+
+    elif eleccion == 2:
+        Pc.apagar()
+        menu()
+
+    elif eleccion == 3:
+        Pc.actualizarRam(12)
+        menu()
+
+    elif eleccion == 4:
+        Pc.actualizarAlmacenamiento(1000)
+        menu()
+
+    elif eleccion == 5:
+        Pc.verComponentes()
+        menu()
+
+    elif eleccion == 6:
+        print("Apagando el equipo")
+        if Pc.encendido == True:
+            Pc.apagar()
+
+
+
+Pc = Computadora("HP", "G7 notebook", 12 , "INTEL", 1000, False )
+
+print(menu())
