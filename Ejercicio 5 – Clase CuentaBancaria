@@ -1,0 +1,46 @@
+# Ejercicio 5 – Clase CuentaBancaria
+
+class CuentaBancaria:
+    def __init__(self, numero_cuenta, saldo):
+        self.numero_cuenta = numero_cuenta
+        self.saldo = saldo
+
+    def depositar(self, monto):
+        self.saldo = self.saldo + monto
+        print("Transaccion exitosa")
+
+    def retirar(self, monto):
+        if self.saldo < monto:
+            print("Saldo insuficiente")
+        else:
+            self.saldo = self.saldo - monto
+            print("Transaccion exitosa")
+
+    def mostrarSaldo(self):
+        print("Su saldo actual es de:", self.saldo, "USD")
+
+cuenta = CuentaBancaria(69, 420)
+
+print("Bienvenido a Bankfriend")
+
+while True:
+    print("Su numero de cuenta es:", cuenta.numero_cuenta)
+    print("Que desea hacer?")
+    print("1) Depositar")
+    print("2) Retirar")
+    print("3) Consultar saldo actual")
+    print("4) Salir")
+
+    eleccion = int(input("Elija una opcion: "))
+    if eleccion == 1:
+        monto = float(input("Ingrese el monto a depositar: "))
+        cuenta.depositar(monto)
+    elif eleccion == 2:
+        monto = float(input("Ingrese el monto a retirar: "))
+        cuenta.retirar(monto)
+    elif eleccion == 3:
+        cuenta.mostrarSaldo()
+    elif eleccion == 4:
+        print("Gracias por usar Bankfriend, Vuelva pronto")
+    else:
+        print("Negado, vuelva a intentarlo")
