@@ -1,0 +1,87 @@
+# Ejercicio 2 - Clase Animal y Ejercicio 4 – Subclase Perro
+
+class Animal:
+
+    def __init__(self, nombre, edad, especie, sonido):
+        self.nombre = nombre
+        self.edad = edad
+        self.especie = especie
+        self.sonido = sonido
+
+    def hacer_sonido(self):
+        print(self.sonido)
+
+    def cumplir_anios(self):
+        self.edad += 1
+        print(self.nombre, ", FELIZ CUMPLEANIOS, AHORA TIENES ", self.edad, "ANIOS")
+    
+    def eleccion(self):
+            print("Este es", self.nombre, "mi", self.especie, "de", self.edad, "anios")
+            print("Que quieres que haga", self.nombre, "?")
+            print("1) Hacer sonido")
+            print("2) Cumplir años")
+            print("3) Volver")
+            eleccion = int(input("Elija una opcion: "))
+            if eleccion == 1:
+                self.hacer_sonido()
+                menu()
+
+            elif eleccion == 2:
+                self.cumplir_anios()
+                menu()
+
+            elif eleccion == 3:
+                menu()   
+
+            else:
+                print("Negativo, intente denuevo")
+
+class Perro(Animal):
+    def __init__(self, nombre, edad, especie, sonido, raza):
+        super().__init__(nombre, edad, especie, sonido)
+        self.raza = raza
+
+    def eleccioncan(self):
+        print("Este es", self.nombre, "un", self.especie, "de raza", self.raza,)
+        print("Que quieres que haga", self.nombre, "?")
+        print("1) Ladrar")
+        print("2) Volver")
+        eleccion = int(input("Elija una opcion: "))
+        if eleccion == 1:
+                self.hacer_sonido()
+                menu()
+        else:
+            menu()
+
+
+def menu():
+    print("Bienvenido a Mascota Sociedad (no confundir con Pet society)")
+    print("solamente puedes observar estas mascotas:")
+
+    print("1) Perro")
+    print("2) Camaron")
+    print("3) Piedra")
+    print("4) Zorro")
+
+    eleccion = int(input("Elija una opcion: "))
+    if eleccion == 1:
+        Perro1.eleccioncan()
+
+    elif eleccion == 2:
+        Camaron2.eleccion()
+
+    elif eleccion == 3:
+       Piedra3.eleccion()
+
+    elif eleccion == 4:
+       Zorro4.eleccion() 
+    else:
+        print("Opción inválida, vuelve a intentarlo")
+
+
+Perro1 = Perro("Patan", 14, "perro", "guau", "pointer ingles")
+Camaron2 = Animal("Gucci", 2, "Camaron Pistola", "CHAK")
+Piedra3 = Animal("Rocky", 1000, "Piedra roja", "...")
+Zorro4 = Animal("Ylvis", 12, "Zorro Anaranjado", "Ring-ding-ding-ding-dingeringeding")
+
+print(menu())
